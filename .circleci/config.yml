@@ -13,5 +13,5 @@ jobs:
          docker login ambienttraining.azurecr.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
          docker build -t $FULL_DOCKER_IMAGE_NAME .
-         #docker login -u $DOCKER_USER -p $DOCKER_PASS
-         #docker run -d --name db company/proprietary-db:1.2.3
+
+         docker push $FULL_DOCKER_IMAGE_NAME
