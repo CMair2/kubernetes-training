@@ -9,6 +9,9 @@ jobs:
      - run: |
          echo "ambienttraining.azurecr.io/nginx-demo-christoph.$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM" > full_docker_image_name
          FULL_DOCKER_IMAGE_NAME=`cat full_docker_image_name`
+
+         docker login ambienttraining.azurecr.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
          docker build -t $FULL_DOCKER_IMAGE_NAME .
          #docker login -u $DOCKER_USER -p $DOCKER_PASS
          #docker run -d --name db company/proprietary-db:1.2.3
