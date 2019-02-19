@@ -7,11 +7,11 @@ jobs:
      # start proprietary DB using private Docker image
      # with credentials stored in the UI
      - run: |
-         echo "ambienttraining.azurecr.io/nginx-demo-christoph.$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM" > full_docker_image_name
+         echo "ambienttraining.azurecr.io/nginx-demo-christoph:$CIRCLE_BRANCH-$CIRCLE_BUILD_NUM" > full_docker_image_name
          FULL_DOCKER_IMAGE_NAME=`cat full_docker_image_name`
 
          docker login ambienttraining.azurecr.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-         docker build -t $FULL_DOCKER_IMAGE_NAME:$CIRCLE_BRANCH-$CIRCLE_SHA1 .
+         docker build -t $FULL_DOCKER_IMAGE_NAME .
 
-         docker push $FULL_DOCKER_IMAGE_NAME:$CIRCLE_BRANCH-$CIRCLE_SHA1
+         docker push $FULL_DOCKER_IMAGE_NAME
